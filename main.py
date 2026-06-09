@@ -4,9 +4,9 @@ import sqlite3
 import pathlib
 
 
-DB_NAME = 'FlightManagement.db'
+DB_NAME = 'FlightManagement.db' # Below is the DataBase name.
 
-
+# Seed data into the DataBase.
 SCHEMA_AND_SEED_SQL = """
 PRAGMA foreign_keys = ON;
 
@@ -292,7 +292,7 @@ SQL_QUERIES = {
 
 
 
-
+# Initialise db connection using sqlite3
 def get_connection():
     conn = sqlite3.connect(DB_NAME)
     conn.execute('PRAGMA foreign_keys = ON;')
@@ -301,7 +301,7 @@ def get_connection():
 
 
 
-
+# Initialise and run database seed sql script
 def initialize_database(conn=None, force_reset=False):
     db_exists = pathlib.Path(DB_NAME).exists()
     if force_reset or not db_exists:
@@ -355,7 +355,7 @@ def list_reference_data(conn):
 
 
 
-
+# Add new flight data
 def add_new_flight(conn):
     print('--- Add a New Flight ---')
     list_reference_data(conn)
@@ -378,7 +378,7 @@ def add_new_flight(conn):
 
 
 
-
+# View flights based on criteria
 def view_flights_by_criteria(conn):
     print('--- View Flights by Criteria ---')
     destination = input('Enter destination city or airport code (leave blank for all): It is case insensitive ').strip() or None
