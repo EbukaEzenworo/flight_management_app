@@ -381,8 +381,8 @@ def add_new_flight(conn):
 
 def view_flights_by_criteria(conn):
     print('--- View Flights by Criteria ---')
-    destination = input('Enter destination city or airport code (leave blank for all): ').strip() or None
-    status = input("Enter status name e.g 'Landed','In Air' (leave blank for all): ").strip() or None
+    destination = input('Enter destination city or airport code (leave blank for all): It is case insensitive ').strip() or None
+    status = input("Enter status name e.g 'Landed','In Air' (leave blank for all): It is case insensitive ").strip() or None
     departure_date = input('Enter departure date YYYY-MM-DD (leave blank for all): ').strip() or None
     rows = fetch_all(conn, SQL_QUERIES['view_flights_by_criteria'], (
         destination, destination, destination, destination, destination,
